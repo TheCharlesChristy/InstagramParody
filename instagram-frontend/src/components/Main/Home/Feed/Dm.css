@@ -1,0 +1,21 @@
+.DMbtn{
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+    background-image: url("C:\Users\Charles\Desktop\Projects\Instagram clone\instagram-clone\src\Images\Dmbtn.png");
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    border: 2px solid rgba(128,128,128,0.2);
+    margin: 20px;
+    margin-top: 18px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.DMbtn:hover{
+    transform: scale(1.03);
+    transition: all 0.3s ease-in-out;
+}

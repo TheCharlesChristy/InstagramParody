@@ -1,0 +1,13 @@
+.FeedPost{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    max-width: 100%;
+    min-height: 500px;
+    max-height: 500px;
+    background-color: transparent;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 3px solid rgba(128, 128, 128, 0.4);
+}

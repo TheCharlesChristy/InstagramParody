@@ -1,0 +1,31 @@
+.Caption{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 37px;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.4);
+    font-size: 16px;
+}
+
+.Cap{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.ViewComments{
+    display: flex;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    margin-top: 3px;
+    margin-right: 10px;
+}

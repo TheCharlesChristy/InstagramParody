@@ -1,0 +1,22 @@
+.Home{
+    height: 90%;
+    width: 20%;
+    left: 0;
+    border: 2px solid rgba(128,128,128,0.3);
+    border-radius: 10px;
+}
+.Homebtn{
+    width: 100%;
+    height: 100%;
+    background-image: url("C:\Users\Charles\Desktop\Projects\Instagram clone\instagram-clone\src\Images\homeBtn.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+}
+.Home:hover{
+    transform: scale(1.03);
+    transition: all 0.1s ease-in-out;
+}

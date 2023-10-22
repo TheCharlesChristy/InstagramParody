@@ -1,0 +1,20 @@
+.profiledetails{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #000;
+    border-left: 0;
+    background-color: aquamarine;
+    padding: 0 0 0 5%;
+    align-items: center;
+    justify-content: center;
+}
+.profilebars{
+    height: 90%;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

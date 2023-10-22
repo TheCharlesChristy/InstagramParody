@@ -1,0 +1,14 @@
+.Postcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 70%;
+    border: 1px solid #000;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    justify-content: flex-start;
+}
+.Postcontainer::-webkit-scrollbar {
+    display: none;
+}

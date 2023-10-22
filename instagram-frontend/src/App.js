@@ -9,57 +9,74 @@ import HomePG from './components/Main/Home.js';
 import SearchPG from './components/Main/Search.js';
 import PostPG from './components/Main/Post.js';
 import ProfilePG from './components/Main/Profile.js';
+import LoginPG from './components/Main/Login.js';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
-  const [content, setContent] = useState(<HomePG />);
+  const [isLoggedin, setLoggedin] = useState(false);
+  const [username, setUsername] = useState("");   
+  const [content, setContent] = useState(<LoginPG login={login} />);
   const [isHome, setHome] = useState(0);
   const [isSearch, setSearch] = useState(0);
   const [isPost, setPost] = useState(0);
   const [isProfile, setProfile] = useState(0);
 
+  function login(uname) {
+    setLoggedin(true);
+    setUsername(uname);
+    setContent(<HomePG />);
+    setHome(1);
+    setSearch(0);
+    setPost(0);
+    setProfile(0);
+  }
+
   function homeRedir() {
-    if (isHome === 0) {
+    if (isLoggedin===true) {
       setContent(<HomePG />);
       setHome(1);
       setSearch(0);
       setPost(0);
       setProfile(0);
-      console.log(content)
+    }else if(isLoggedin===false){
+      alert("Please login first!");
     }
   }
 
   function searchRedir() {
-    if (isSearch === 0) {
+    if (isLoggedin===true) {
       setContent(<SearchPG />);
       setHome(0);
       setSearch(1);
       setPost(0);
       setProfile(0);
-      console.log(content)
+    }else if(isLoggedin===false){
+      alert("Please login first!");
     }
   }
 
   function postRedir() {
-    if (isPost === 0) {
-      setContent(<PostPG />);
+    if (isLoggedin===true) {
+      setContent(<PostPG uname={username} />);
       setHome(0);
       setSearch(0);
       setPost(1);
       setProfile(0);
-      console.log(content)
+    }else if(isLoggedin===false){
+      alert("Please login first!");
     }
   }
 
   function profileRedir() {
-    if (isProfile === 0) {
+    if (isLoggedin===true) {
       setContent(<ProfilePG />);
       setHome(0);
       setSearch(0);
       setPost(0);
       setProfile(1);
-      console.log(content)
+    }else if(isLoggedin===false){
+      alert("Please login first!");
     }
   }
   

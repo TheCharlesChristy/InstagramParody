@@ -1,0 +1,61 @@
+.Takepost{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+.stream{
+    display: flex;
+    border-radius: 20px;
+    max-width: 95%;
+    max-height: 95%;
+}
+
+.takephoto{
+    display: flex;
+    min-width: 60px;
+    min-height: 60px;
+    border: none;
+    background-image: url('C:\Users\Charles\Desktop\Projects\InstagramParody\instagram-frontend\src\Images\Takephoto.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 15%;
+    background-color: transparent;
+}
+.takephoto:hover{
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+.selectpost{
+    display: flex;
+    position: absolute;
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    top: 0px;
+    right: 0px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    font: small;
+    font-size: 10px;
+}
+.selectpost:hover{
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+.hiddeninput{
+    display: none;
+}

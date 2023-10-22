@@ -1,34 +1,60 @@
-// Import the Express.js framework, which simplifies building web servers.
+// import express for running server, bodyparser to simplify handling requests, cors to allow cross-origin requests
 import express from 'express';
-
-// Import the body-parser middleware for parsing incoming request bodies.
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import DBhandler  from './fetchdb.js';
+import Tofile from './topng.js';
 
-// Create an instance of the Express application.
+
+
+// create and configure server
+const db = new DBhandler();
+const tofile = new Tofile()
 const app = express();
-
-// Define the port where your server will listen for incoming requests.
-// process.env.PORT is often used in production to allow the hosting environment to set the port
+app.use(cors('*'));
 const port = process.env.PORT || 5000;
-
-// Middleware: Use body-parser to parse incoming JSON requests.
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(express.json());
 app.use(bodyParser.json());
 
-// Define your routes here. You'll create routes for handling different HTTP methods and endpoints.
-
-// For example, a GET request to '/api/data' would be handled here:
+// request handling goes here
 app.get('/api/data', (req, res) => {
-  // Handle the GET request and send a response.
-  // You would typically fetch data from a database here and send it back as JSON.
+  res.send({ message: 'Hello, world!' });
 });
 
-// Similarly, a POST request to '/api/data' would be handled here:
-app.post('/api/data', (req, res) => {
-  // Handle the POST request and send a response.
-  // You would typically insert data into a database here and send a success message.
+app.post('/api/addUser', (req, res) => {
+  db.addUser(req.body.username, req.body.password);
+  res.send({ message: 'User added successfully!' });
 });
 
-// Start the Express server and listen on the specified port.
+app.post('/api/login', async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  console.log("Attempting to login with username: " + username);
+  let login = await db.login(username, password);
+  console.log(login);
+  if(login == true){
+    res.status(210).send(JSON.stringify({ 'login': true, 'username': username }));
+  }else{
+    res.status(450).send({ 'login': false });
+  }
+});
+
+app.post('/api/addPost', async (req, res) => {
+  let postnumber = await db.getpostnumber();
+  let outpath = await tofile.convert(req.body.photo, postnumber);
+  try{
+    await db.addPost(req.body.username, outpath, req.body.caption);
+    res.status(200).send();
+  }catch{
+    res.status(400).send();
+  }
+});
+
+
+
+// tell server to listen on port 5000
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

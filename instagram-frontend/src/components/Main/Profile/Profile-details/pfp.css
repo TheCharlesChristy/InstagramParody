@@ -1,0 +1,13 @@
+.pfp{
+    min-width: 40px;
+    min-height: 40px;
+    aspect-ratio: 1/1;
+    width: 50%;
+    height: 50%;
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background-color: red;
+    margin-right: 5%;
+}

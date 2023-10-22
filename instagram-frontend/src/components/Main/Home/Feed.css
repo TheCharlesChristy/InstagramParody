@@ -34,7 +34,6 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     border-top: 2px solid rgba(128, 128, 128, 0.2);
-    border-bottom: 2px solid rgba(128, 128, 128, 0.2);
 }
 .Posts::-webkit-scrollbar {
     display: none;

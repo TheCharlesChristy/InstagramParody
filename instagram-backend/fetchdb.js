@@ -7,7 +7,7 @@ class DBhandler {
             user: 'postgres',
             host: 'localhost',
             database: 'instagramclone',
-            password: 'lol',
+            password: 'lol:)',
             port: 7000,
         });
     }
@@ -100,6 +100,17 @@ class DBhandler {
         let res = await this.executeQuery(query, client);
         client.release();
         return [res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username];
+    }
+    async removeduplicates(arr){
+        let dict = {};
+        for(let i = 0; i < arr.length; i++){
+            dict[arr[i]] = 1;
+        }
+        let newarr = [];
+        for(let key in dict){
+            newarr.push(key);
+        }
+        return newarr;
     }
 }
 

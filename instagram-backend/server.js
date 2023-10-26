@@ -106,9 +106,49 @@ app.post('/api/getrecommendedusers', async (req, res) => {
     res.status(200).send(JSON.stringify(users));
   }else if(following.length < 6){
     //if the user is following less than 6 users, return a list of users that the users following are following
+    let usersdict={}
+    following.forEach(user => {
+      let temp = db.getfollowing(user);
+      temp.forEach(user2 => {
+        if(user2.username != username){
+          usersdict[user2.username] = 1;
+        }
+      });
+    });
+    let users = [];
+    for(let key in usersdict){
+      users.push(key);
+    }
+    if(users.length > 100){
+      users = users.slice(0, 100);
+    }
+    res.status(200).send(JSON.stringify(users));
   }else{
     //if the user is following more than 6 users, randomly select 5 users that the user is following
     //and return a list of users that the users following are following
+    let selectedfollowing = [];
+    for(let i=0; i<5; i++){
+      let randindex = Math.floor(Math.random()*following.length);
+      selectedfollowing.push(following[randindex]);
+      following.splice(randindex, 1);
+    }
+    let usersdict={}
+    following.forEach(user => {
+      let temp = db.getfollowing(user);
+      temp.forEach(user2 => {
+        if(user2.username != username){
+          usersdict[user2.username] = 1;
+        }
+      });
+    });
+    let users = [];
+    for(let key in usersdict){
+      users.push(key);
+    }
+    if(users.length > 100){
+      users = users.slice(0, 100);
+    }
+    res.status(200).send(JSON.stringify(users));
   }
 });
 

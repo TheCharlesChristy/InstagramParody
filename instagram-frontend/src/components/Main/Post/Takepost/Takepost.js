@@ -78,9 +78,11 @@ function Takepost({ photopost }) {
     <div className='Takepost'>
         <input type="file" id="fileInput" className='hiddeninput' accept="image/*"></input>
         <button onClick={selectPhoto} className='selectpost'>Select photo</button>
-        <video ref={videoRef} autoPlay muted style={{ transform: 'scaleX(-1)' }} className='stream'/>
-        <canvas ref={canvasRef} style={{ display: 'none' }} />
-        <button onClick={takePhoto} className='takephoto'></button>
+        <div className='takephotodiv'>
+          <video ref={videoRef} autoPlay muted style={{ transform: 'scaleX(-1)' }} className='stream'/>
+          <canvas ref={canvasRef} style={{ display: 'none' }} />
+          <button onClick={takePhoto} className='takephoto'></button>
+        </div>
     </div>
   )
 }

@@ -5,6 +5,23 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
-    justify-content: space-around;
+    justify-content: center;
     border-bottom: 2px solid rgba(128, 128, 128, 0.2);
+}
+.userstats__name{
+    height: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    white-space: wrap;
+}
+.profile__header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: spacearound;
+    margin: 10px;
 }

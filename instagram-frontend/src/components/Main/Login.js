@@ -19,7 +19,7 @@ function LoginPG({ login }) {
       let username = event.target[0].value
       let password = event.target[1].value.hashCode()
 
-      await fetch('http://192.168.0.32:5000/api/login', {
+      await fetch('http://192.168.0.31:5000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

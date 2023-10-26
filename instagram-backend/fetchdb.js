@@ -7,7 +7,7 @@ class DBhandler {
             user: 'postgres',
             host: 'localhost',
             database: 'instagramclone',
-            password: 'nicetrylol',
+            password: 'lol',
             port: 7000,
         });
     }
@@ -47,6 +47,59 @@ class DBhandler {
         let res = await this.executeQuery(query, client);
         client.release();
         return res.rows.length;
+    }
+    async getuserdata(username){
+        let client = await this.pool.connect();
+        let query = `SELECT * FROM users WHERE username='${username}'`;
+        let res = await this.executeQuery(query, client);
+        let userdata = res.rows[0];
+        query = `SELECT * FROM followers WHERE followed='${username}'`;
+        res = await this.executeQuery(query, client);
+        userdata.followers = res.rows.length;
+        query = `SELECT * FROM followers WHERE follower='${username}'`;
+        res = await this.executeQuery(query, client);
+        userdata.following = res.rows.length;
+        client.release();
+        return userdata;
+    }
+    async changepfp(username, pfpurl){
+        let client = await this.pool.connect();
+        let query = `UPDATE users SET pfpurl='${pfpurl}' WHERE username='${username}'`;
+        let res = await this.executeQuery(query, client);
+        client.release();
+        return res;
+    }
+    async getuserposts(username){
+        let client = await this.pool.connect();
+        let query = `SELECT * FROM post WHERE username = '${username}' ORDER BY timeofpost DESC;
+        `;
+        let res = await this.executeQuery(query, client);
+        client.release();
+        return res.rows;
+    }
+    async getfollowing(username){
+        let client = await this.pool.connect();
+        let query = `SELECT * FROM followers WHERE follower = '${username}'`;
+        let res = await this.executeQuery(query, client);
+        client.release();
+        res.rows.forEach((row, index) => {
+            res.rows[index] = row.followed;
+        });
+        return res.rows;
+    }
+    async addfollower(follower, followed){
+        let client = await this.pool.connect();
+        let query = `INSERT INTO followers(follower, followed) VALUES('${follower}', '${followed}')`;
+        let res = await this.executeQuery(query, client);
+        client.release();
+        return res;
+    }
+    async getrandusers(){
+        let client = await this.pool.connect();
+        let query = `SELECT * FROM users`;
+        let res = await this.executeQuery(query, client);
+        client.release();
+        return [res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username, res.rows[Math.floor((Math.random()*res.rows.length))].username];
     }
 }
 

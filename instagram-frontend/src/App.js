@@ -46,7 +46,7 @@ function App() {
 
   function searchRedir() {
     if (isLoggedin===true) {
-      setContent(<SearchPG />);
+      setContent(<SearchPG username={username}/>);
       setHome(0);
       setSearch(1);
       setPost(0);
@@ -58,7 +58,7 @@ function App() {
 
   function postRedir() {
     if (isLoggedin===true) {
-      setContent(<PostPG uname={username} />);
+      setContent(<PostPG uname={username}/>);
       setHome(0);
       setSearch(0);
       setPost(1);
@@ -68,9 +68,9 @@ function App() {
     }
   }
 
-  function profileRedir() {
+  function selfprofileRedir() {
     if (isLoggedin===true) {
-      setContent(<ProfilePG />);
+      setContent(<ProfilePG username={username} viewing={username} />);
       setHome(0);
       setSearch(0);
       setPost(0);
@@ -83,7 +83,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar homeRedir={homeRedir} searchRedir={searchRedir} postRedir={postRedir} profileRedir={profileRedir}/>
+        <Navbar homeRedir={homeRedir} searchRedir={searchRedir} postRedir={postRedir} profileRedir={selfprofileRedir}/>
         <Routes>
           <Route path="/" exact component={Home} />
           <Route path="/search" exact component={Search} />

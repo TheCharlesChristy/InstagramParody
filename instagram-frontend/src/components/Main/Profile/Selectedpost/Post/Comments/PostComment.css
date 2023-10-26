@@ -1,0 +1,52 @@
+.SelectedPostCommentdiv{
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+}
+.commentdiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+    height: 40px;
+    padding: 7px;
+    font-size: 16px;
+}
+.commentinputarea{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+    padding: 7px;
+}
+.postinputcomment{
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    resize: none;
+    height: 100%;
+    width: 75%;
+    display: flex;
+    color: black;
+    padding: 3px;
+    border-radius: 5px;
+}
+.postcommentbutton{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-image: url('C:/Users/Charles/Desktop/Projects/InstagramParody/instagram-frontend/src/Images/Upload.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(1, 86, 206);
+    border: none;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 15px;
+}
+.postcommentbutton:hover{
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
